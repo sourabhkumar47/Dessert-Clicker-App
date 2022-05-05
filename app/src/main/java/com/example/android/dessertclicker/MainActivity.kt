@@ -17,7 +17,9 @@
 package com.example.android.dessertclicker
 
 import android.content.ActivityNotFoundException
+import android.nfc.Tag
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -26,6 +28,7 @@ import androidx.core.app.ShareCompat
 import androidx.databinding.DataBindingUtil
 import com.example.android.dessertclicker.databinding.ActivityMainBinding
 
+const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity() {
 
     private var revenue = 0
@@ -33,6 +36,11 @@ class MainActivity : AppCompatActivity() {
 
     // Contains all the views
     private lateinit var binding: ActivityMainBinding
+    override fun onStart() {
+        super.onStart()
+        Log.d("TAG","onStart")
+
+    }
 
     /** Dessert Data **/
 
@@ -63,6 +71,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d("onCreate ","onCreate")
         // Use Data Binding to get reference to the views
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
