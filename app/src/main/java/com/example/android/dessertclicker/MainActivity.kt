@@ -29,6 +29,8 @@ import androidx.databinding.DataBindingUtil
 import com.example.android.dessertclicker.databinding.ActivityMainBinding
 
 const val TAG = "MainActivity"
+const val KEY_REVENGE = "revenue_key"
+const val KEY_DESSERT_SOLD = "dessert_sold_key"
 class MainActivity : AppCompatActivity() {
 
     private var revenue = 0
@@ -51,6 +53,11 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         Log.d(TAG,"onResume called")
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        Log.d(TAG,"onSaveInstanceState  Called")
     }
 
     override fun onPause() {
