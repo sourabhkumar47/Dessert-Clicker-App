@@ -29,8 +29,10 @@ import androidx.databinding.DataBindingUtil
 import com.example.android.dessertclicker.databinding.ActivityMainBinding
 
 const val TAG = "MainActivity"
+
 const val KEY_REVENGE = "revenue_key"
 const val KEY_DESSERT_SOLD = "dessert_sold_key"
+
 class MainActivity : AppCompatActivity() {
 
     private var revenue = 0
@@ -55,8 +57,10 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG,"onResume called")
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
+    override fun onSaveInstanceState(outState: Bundle ) {
         super.onSaveInstanceState(outState)
+        outState.putInt(KEY_REVENGE,revenue)
+        outState.putInt(KEY_DESSERT_SOLD,dessertsSold)
         Log.d(TAG,"onSaveInstanceState  Called")
     }
 
@@ -110,6 +114,18 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d("MainActivity", "onCreate Called")
+
+        //Adding onCreate restore bundle
+        //when onCreate is not null we know it is re-creating
+        //which in turn tells you if the app has been started
+        // fresh or has been re-created after a shutdown
+        //This test is a common pattern for restoring data from the bundle.
+        if(savedInstanceState != null){
+            revenue = savedInstanceState.getInt(KEY_REVENGE,0)
+            dessertsSold = savedInstanceState.getInt(KEY_DESSERT_SOLD,0)
+//            showCurrentDessert()
+        }
+
         // Use Data Binding to get reference to the views
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
