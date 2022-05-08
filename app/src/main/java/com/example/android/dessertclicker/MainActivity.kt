@@ -123,7 +123,7 @@ class MainActivity : AppCompatActivity() {
         if(savedInstanceState != null){
             revenue = savedInstanceState.getInt(KEY_REVENGE,0)
             dessertsSold = savedInstanceState.getInt(KEY_DESSERT_SOLD,0)
-//            showCurrentDessert()
+            showCurrentDessert()
         }
 
         // Use Data Binding to get reference to the views
